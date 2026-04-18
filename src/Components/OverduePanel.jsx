@@ -7,7 +7,7 @@ function OverduePanel({ setIndex }) {
     const navigate = useNavigate();
 
     const todayStr = new Date().toISOString().split("T")[0];
-    const overdueTasks = tasks.filter(t => t.dueDate && !t.isCompleted && t.dueDate.split("T")[0] < todayStr);
+    const overdueTasks = tasks.filter(t => t.dueDate && !t.isCompleted && t.dueDate < todayStr);
 
     const formatDate = (dateStr) => {
         const date = new Date(dateStr);

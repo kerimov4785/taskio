@@ -102,7 +102,7 @@
 .card-circle{
     position: absolute;
     bottom: -24px;
-    right: 7px;
+    right: -12px;
     width: 96px;
     height: 96px;
     border-radius: 50%;

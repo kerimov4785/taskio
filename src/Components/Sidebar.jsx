@@ -5,9 +5,6 @@ import logo from '../assets/logo.png'
 
 function Sidebar({ index, setIndex, withDateTasks, totalTasks, activeTasks, activeGroup, setActiveGroup }) {
     const navigate = useNavigate()
-    const location = useLocation()
-    
-
     return (
         <div className='sidebar'>
             <div className='logo'>
