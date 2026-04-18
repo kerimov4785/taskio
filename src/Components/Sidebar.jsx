@@ -1,6 +1,7 @@
 import React, { use, useContext, useState } from 'react'
 import "../styles/sidebar.css"
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import logo from '../assets/logo.png'
 
 function Sidebar({ index, setIndex, withDateTasks, totalTasks, activeTasks, activeGroup, setActiveGroup }) {
     const navigate = useNavigate()
@@ -10,7 +11,7 @@ function Sidebar({ index, setIndex, withDateTasks, totalTasks, activeTasks, acti
     return (
         <div className='sidebar'>
             <div className='logo'>
-                <img src="../src/assets/logo.png" alt="" />
+                <img src={logo} alt="Taskio" />
                 <div>
                     <h6>Taskio</h6>
                     <p>Productive Hub</p>
