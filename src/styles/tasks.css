@@ -1,0 +1,201 @@
+.all-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.task-card {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--color-gray-100);
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.task-card:hover {
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border-color: var(--color-gray-200);
+}
+
+.task-card-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.task-checkbox-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--color-gray-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.task-card-left:hover .task-checkbox-circle {
+    border-color: #155DFC;
+}
+
+.task-checkbox-circle.checked {
+    background: #155DFC;
+    border-color: #155DFC;
+}
+
+.task-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-gray-800);
+    transition: all 0.2s;
+}
+
+.task-title.completed {
+    text-decoration: line-through;
+    color: var(--color-gray-400);
+}
+
+.task-card-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.task-priority , .task-group {
+    padding: 2px 14px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Priority tags reused to ensure they work without dashboard.css */
+.tag-high {
+    color: var(--color-red-700);
+    background: var(--color-red-50);
+    border: 1px solid var(--color-red-200);
+}
+
+.tag-medium {
+    color: var(--color-yellow-700);
+    background: var(--color-yellow-50);
+    border: 1px solid var(--color-yellow-200);
+}
+
+.tag-low {
+    color: var(--color-gray-700);
+    background: var(--color-gray-50);
+    border: 1px solid var(--color-gray-200);
+}
+
+.tag-work {
+    color: var(--color-blue-700);
+    background: var(--color-blue-50);
+    border: 1px solid var(--color-blue-200);
+}
+
+.tag-study {
+    color: var(--color-purple-700);
+    background: var(--color-purple-50);
+    border: 1px solid var(--color-purple-200);
+}
+
+.tag-personal {
+    color: var(--color-green-700);
+    background: var(--color-green-50);
+    border: 1px solid var(--color-green-200);
+}
+
+.task-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-gray-500);
+    min-width: 90px;
+}
+
+.task-date.today {
+    color: var(--color-orange-600);
+}
+
+.task-status {
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 90px;
+    text-align: center;
+}
+
+.status-completed {
+    background: var(--color-green-50);
+    color: var(--color-green-700);
+}
+
+.status-active {
+    background: var(--color-orange-50);
+    color: var(--color-orange-700);
+}
+
+.task-delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.task-delete-btn:hover {
+    color: var(--color-red-600);
+    background: var(--color-red-50);
+}
+
+/* Empty State */
+.tasks-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    margin-top: 40px;
+}
+
+.empty-icon-wrapper {
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(21, 93, 252, 0.08) 0%, rgba(21, 93, 252, 0) 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 24px;
+}
+
+.tasks-empty-state h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 8px;
+}
+
+.tasks-empty-state p {
+    font-size: 14px;
+    color: var(--color-gray-500);
+}

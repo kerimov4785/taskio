@@ -135,7 +135,7 @@ function DataProvider({ children }) {
             group: group || "",
             priority,
             isCompleted: false,
-            dueDate: dueDate || new Date().toISOString(),
+            dueDate: dueDate || new Date().toISOString().split('T')[0],
             createdAt: new Date().toISOString()
         };
         setTasks(prev => [...prev, newTask])

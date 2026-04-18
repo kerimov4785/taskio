@@ -3,7 +3,7 @@ import "../styles/sidebar.css"
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.png'
 
-function Sidebar({ index, setIndex, withDateTasks, totalTasks, activeTasks, activeGroup, setActiveGroup }) {
+function Sidebar({ workTasks, studyTasks, personalTasks, index, setIndex, withDateTasks, totalTasks, activeTasks, activeGroup, setActiveGroup }) {
     const navigate = useNavigate()
     return (
         <div className='sidebar'>
@@ -16,7 +16,7 @@ function Sidebar({ index, setIndex, withDateTasks, totalTasks, activeTasks, acti
             </div>
             <nav>
                 <NavLink onClick={() => setIndex(0)} to="/">
-                    <div style={{ top: `${index * 48 + index * 10 }px` }} className="status-bar"></div>
+                    <div style={{ top: `${index * 48 + index * 10}px` }} className="status-bar"></div>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.5 2.5H3.33333C2.8731 2.5 2.5 2.8731 2.5 3.33333V9.16667C2.5 9.6269 2.8731 10 3.33333 10H7.5C7.96024 10 8.33333 9.6269 8.33333 9.16667V3.33333C8.33333 2.8731 7.96024 2.5 7.5 2.5Z" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M16.6667 2.5H12.5C12.0398 2.5 11.6667 2.8731 11.6667 3.33333V5.83333C11.6667 6.29357 12.0398 6.66667 12.5 6.66667H16.6667C17.1269 6.66667 17.5 6.29357 17.5 5.83333V3.33333C17.5 2.8731 17.1269 2.5 16.6667 2.5Z" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
@@ -51,20 +51,23 @@ function Sidebar({ index, setIndex, withDateTasks, totalTasks, activeTasks, acti
             <div className='sidebar-groups'>
                 <h5>GROUPS</h5>
                 <ul>
-                    <li onClick={() => { navigate("/tasks"); setActiveGroup("work"); setIndex(1) }}
-                        style={{ "--accent-color": "var(--color-blue-100)", backgroundColor: activeGroup === "work" ? "var(--color-blue-50) !important" : "transparent", color: activeGroup === "work" ? "var(--color-blue-700)" : "var(--color-gray-700)" }}>
+                    <li onClick={() => { navigate("/tasks"); setActiveGroup("Work"); setIndex(1) }}
+                        style={{ "--accent-color": "var(--color-blue-100)", backgroundColor: activeGroup.toLowerCase() === "work" ? "var(--color-blue-50) !important" : "transparent", color: activeGroup.toLowerCase() === "work" ? "var(--color-blue-700)" : "var(--color-gray-700)" }}>
                         <span className='dot' style={{ backgroundColor: "var(--color-blue-500)" }}></span>
                         Work
+                        <div>{workTasks}</div>
                     </li>
-                    <li onClick={() => { navigate("/tasks"); setActiveGroup("study"); setIndex(1) }}
-                        style={{ "--accent-color": "var(--color-purple-100)", backgroundColor: activeGroup === "study" ? "var(--color-purple-50) !important" : "transparent", color: activeGroup === "study" ? "var(--color-purple-700)" : "var(--color-gray-700)" }}>
+                    <li onClick={() => { navigate("/tasks"); setActiveGroup("Study"); setIndex(1) }}
+                        style={{ "--accent-color": "var(--color-purple-100)", backgroundColor: activeGroup.toLowerCase() === "study" ? "var(--color-purple-50) !important" : "transparent", color: activeGroup.toLowerCase() === "study" ? "var(--color-purple-700)" : "var(--color-gray-700)" }}>
                         <span className='dot' style={{ backgroundColor: "var(--color-purple-500)" }}></span>
                         Study
+                        <div>{studyTasks}</div>
                     </li>
-                    <li onClick={() => { navigate("/tasks"); setActiveGroup("personal"); setIndex(1) }}
-                        style={{ "--accent-color": "var(--color-green-100)", backgroundColor: activeGroup === "personal" ? "var(--color-green-50) !important" : "transparent", color: activeGroup === "personal" ? "var(--color-green-700)" : "var(--color-gray-700)" }}>
+                    <li onClick={() => { navigate("/tasks"); setActiveGroup("Personal"); setIndex(1) }}
+                        style={{ "--accent-color": "var(--color-green-100)", backgroundColor: activeGroup.toLowerCase() === "personal" ? "var(--color-green-50) !important" : "transparent", color: activeGroup.toLowerCase() === "personal" ? "var(--color-green-700)" : "var(--color-gray-700)" }}>
                         <span className='dot' style={{ backgroundColor: "var(--color-green-500)" }}></span>
                         Personal
+                        <div>{personalTasks}</div>
                     </li>
                 </ul>
             </div>

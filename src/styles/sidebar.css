@@ -60,7 +60,7 @@
 .sidebar nav .active:hover {
     background-color: transparent !important;
 }
-.sidebar nav a div{
+.sidebar nav a div , .sidebar-groups li div{
     position: absolute;
     right: 16px;
     padding: 5px 10px;
@@ -69,6 +69,10 @@
     font-weight: 600;
     color: var(--color-gray-700);
     background-color: rgba(229, 231, 235, .5);
+}
+
+.sidebar-groups li div{
+    background-color: transparent !important;
 }
 
 .sidebar nav .active {
@@ -112,6 +116,7 @@
 }
 
 .sidebar-groups li {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 8px;
