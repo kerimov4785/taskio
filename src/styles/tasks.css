@@ -128,7 +128,9 @@
 .task-date.today {
     color: var(--color-orange-600);
 }
-
+.task-date.overduee {
+    color: var(--color-red-600);
+}
 .task-status {
     padding: 4px 12px;
     border-radius: 16px;

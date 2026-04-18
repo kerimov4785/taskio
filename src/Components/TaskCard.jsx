@@ -6,18 +6,21 @@ function TaskCard({ task }) {
     const { toggleTaskStatus , deleteTask } = useContext(DataContext);
 
     const formatDate = (dateStr) => {
+        const date = new Date(dateStr);
         if (!dateStr) return '';
         const today = new Date().toISOString().split("T")[0];
         if (dateStr.split("T")[0] === today) {
             return "Today";
         }
-        const date = new Date(dateStr);
+        if (dateStr.split("T")[0] < today) {
+            return `Overdue: ${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+        }
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     };
 
     const isToday = task.dueDate && task.dueDate.split("T")[0] === new Date().toISOString().split("T")[0];
-
-    return (
+    const isOverdue = task.dueDate && task.dueDate.split("T")[0] < new Date().toISOString().split("T")[0];
+    return (                                    
         <div className="task-card">
             <div className="task-card-left" onClick={() => toggleTaskStatus(task.id)}>
                 <div className={`task-checkbox-circle ${task.isCompleted ? 'checked' : ''}`}>
@@ -38,7 +41,7 @@ function TaskCard({ task }) {
                 <span className={`task-priority tag-${task.priority.toLowerCase()}`}>
                     {task.priority}
                 </span>
-                <div className={`task-date ${isToday ? 'today' : ''}`}>
+                <div className={`task-date ${isToday ? 'today' : isOverdue ? 'overduee' : ''}`}>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5.33333 1.33334V4.00001" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M10.6667 1.33334V4.00001" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
