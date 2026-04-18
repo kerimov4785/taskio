@@ -4,8 +4,7 @@ import { DataContext } from "../Context/DataContext"
 import TaskCard from "../Components/TaskCard"
 import NewTaskBox from "../Components/NewTaskBox";
 
-function Tasks({activeGroup}) {
-    const [activeFilter, setActiveFilter] = useState('All');
+function Tasks({activeGroup, activeFilter, setActiveFilter}) {
     const [sortBy, setSortBy] = useState('DueDate');
     const { tasks } = useContext(DataContext);
     

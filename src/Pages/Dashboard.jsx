@@ -8,7 +8,7 @@ import TodayPanel from '../Components/TodayPanel'
 import OverduePanel from '../Components/OverduePanel'
 import TodayFocus from '../Components/TodayFocus'
 
-function Dashboard({ index, setIndex, completedTasks, activeTasks, totalTasks, completedTasksToday }) {
+function Dashboard({setActiveFilter, index, setIndex, completedTasks, activeTasks, totalTasks, completedTasksToday }) {
   const { tasks, streakCount, getStreak, setStreakCount } = useContext(DataContext)
 
   useEffect(() => {
@@ -85,11 +85,11 @@ function Dashboard({ index, setIndex, completedTasks, activeTasks, totalTasks, c
         </div>
         <div className='analytics'>
           <Chart />
-          <TodayPanel index={index} setIndex={setIndex} />
+          <TodayPanel  setActiveFilter={setActiveFilter} index={index} setIndex={setIndex} />
         </div>
         <div className="overdue">
-          <OverduePanel setIndex={setIndex} />
-          <TodayFocus setIndex={setIndex} />
+          <OverduePanel setActiveFilter={setActiveFilter} setIndex={setIndex} />
+          <TodayFocus setActiveFilter={setActiveFilter} setIndex={setIndex} />
         </div>
       </section>
     </>

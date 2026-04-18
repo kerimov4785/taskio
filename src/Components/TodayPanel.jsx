@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { DataContext } from '../Context/DataContext'
 import { useNavigate } from 'react-router-dom';
 
-function TodayPanel({setIndex }) {
+function TodayPanel({setActiveFilter, setIndex }) {
     const { tasks, toggleTaskStatus } = useContext(DataContext);
     const navigate = useNavigate();
 
@@ -47,7 +47,7 @@ function TodayPanel({setIndex }) {
                     </div>
                 ))}
             </div>
-            <button className='view-all' onClick={() => { navigate('/tasks'), setIndex(1) }}>
+            <button className='view-all' onClick={() => { navigate('/tasks'), setIndex(1) , setActiveFilter('Due Today')}}>
                 View All Tasks
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.33333 8H12.6667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

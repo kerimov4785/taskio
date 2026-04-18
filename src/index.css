@@ -134,6 +134,7 @@
 
 main {
     margin-left: 255px;
+    min-height: calc(100vh - 97px);
     padding: 32px;
     background-color: var(--color-gray-50);
     margin-top: 97px;

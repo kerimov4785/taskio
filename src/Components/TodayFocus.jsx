@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DataContext } from '../Context/DataContext';
 import { useNavigate } from 'react-router-dom';
 
-function TodayFocus({ setIndex }) {
+function TodayFocus({ setActiveFilter, setIndex }) {
     const { tasks } = useContext(DataContext);
     const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ function TodayFocus({ setIndex }) {
             
             <p className="focus-subtitle">Let's keep the momentum going!</p>
             
-            <button className="view-all go-to-tasks" onClick={() => { navigate('/tasks'); if(setIndex) setIndex(1); }}>
+            <button className="view-all go-to-tasks" onClick={() => { navigate('/tasks'); if(setIndex) setIndex(1); setActiveFilter('Due Today') }}>
                 Go to Tasks &rarr;
             </button>
         </div>

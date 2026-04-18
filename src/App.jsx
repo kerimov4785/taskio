@@ -11,6 +11,7 @@ import { DataContext } from "./Context/DataContext"
 
 function App() {
   const [activeGroup, setActiveGroup] = useState("")
+  const [activeFilter, setActiveFilter] = useState('All');
   const location = useLocation()
   const [index, setIndex] = useState(
     location.pathname === "/" ? 0 : location.pathname === "/tasks" ? 1 : location.pathname === "/calendar" ? 2 : 0
@@ -37,8 +38,8 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Dashboard index={index} setIndex={setIndex} completedTasks={completedTasks} activeTasks={activeTasks} totalTasks={totalTasks} completedTasksToday={completedTasksToday} />} />
-          <Route path="/tasks" element={<Tasks activeGroup={activeGroup} />} />
+          <Route path="/" element={<Dashboard setActiveFilter={setActiveFilter} index={index} setIndex={setIndex} completedTasks={completedTasks} activeTasks={activeTasks} totalTasks={totalTasks} completedTasksToday={completedTasksToday} />} />
+          <Route path="/tasks" element={<Tasks activeGroup={activeGroup} activeFilter={activeFilter} setActiveFilter={setActiveFilter} />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />

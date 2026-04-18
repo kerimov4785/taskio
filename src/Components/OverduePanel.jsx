@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DataContext } from '../Context/DataContext';
 import { useNavigate } from 'react-router-dom';
 
-function OverduePanel({ setIndex }) {
+function OverduePanel({setActiveFilter, setIndex }) {
     const { tasks, toggleTaskStatus } = useContext(DataContext);
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ function OverduePanel({ setIndex }) {
                     <h4>Overdue Tasks</h4>
                     <p>Tasks that need your attention</p>
                 </div>
-                <button className="view-all-link" onClick={() => {navigate('/tasks'); if(setIndex) setIndex(1);}}>
+                <button className="view-all-link" onClick={() => {navigate('/tasks'); if(setIndex) setIndex(1); setActiveFilter('Overdue') }}>
                     View All Tasks &rarr;
                 </button>
             </div>
