@@ -78,7 +78,6 @@
     text-align: center;
 }
 
-/* Priority tags reused to ensure they work without dashboard.css */
 .tag-high {
     color: var(--color-red-700);
     background: var(--color-red-50);
@@ -168,14 +167,12 @@
     background: var(--color-red-50);
 }
 
-/* Empty State */
 .tasks-empty-state {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 80px 20px;
     margin-top: 40px;
 }
 
