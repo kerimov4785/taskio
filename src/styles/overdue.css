@@ -1,0 +1,242 @@
+.overdue {
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.overdue-panel {
+    flex: 1;
+}
+
+.today-focus {
+    width: 320px;
+    background: var(--color-blue-50);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid var(--color-gray-200);
+    display: flex;
+    flex-direction: column;
+}
+
+.overdue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.overdue-header h4 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    color: var(--color-gray-900);
+}
+
+.overdue-header p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-gray-600);
+}
+
+.view-all-link {
+    background: transparent;
+    border: none;
+    color: var(--color-blue-700);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.view-all-link:hover {
+    color: var(--color-blue-800);
+}
+
+.overdue-empty {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid var(--color-gray-200);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 220px;
+    box-shadow: 0px 1px 2px -1px #0000001A, 0px 1px 3px 0px #0000001A;
+}
+
+.success-icon-container {
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-green-50);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.overdue-empty h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 4px;
+}
+
+.overdue-empty p {
+    font-size: 14px;
+    color: var(--color-gray-500);
+}
+
+.overdue-list {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid var(--color-gray-200);
+    box-shadow: 0px 1px 2px -1px #0000001A, 0px 1px 3px 0px #0000001A;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.overdue-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.overdue-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.overdue-list::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-300);
+    border-radius: 10px;
+}
+
+.overdue-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: var(--color-red-50);
+    border: 1px solid var(--color-red-200);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.overdue-task:hover {
+    border-color: var(--color-red-300);
+}
+
+.checkbox-red {
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    border: 2px solid var(--color-red-500);
+    border-radius: 4px;
+    flex-shrink: 0;
+    background: white;
+}
+
+.overdue-task:hover .checkbox-red {
+    background: var(--color-red-100);
+}
+
+.task-info-red {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-info-red h5 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-gray-900);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.task-info-red h5 svg {
+    flex-shrink: 0;
+}
+
+.overdue-badge {
+    background: var(--color-red-100);
+    color: var(--color-red-700);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 16px;
+    display: inline-block;
+    width: max-content;
+}
+
+.focus-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.focus-header .icon {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.focus-header h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 4px;
+}
+
+.focus-header p {
+    font-size: 14px;
+    color: var(--color-gray-600);
+}
+
+.progress-container {
+    margin-bottom: 24px;
+}
+
+.progress-bar-bg {
+    height: 8px;
+    background: white;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--color-blue-600);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: right;
+    font-size: 12px;
+    color: var(--color-gray-600);
+    font-weight: 500;
+}
+
+.focus-subtitle {
+    font-size: 14px;
+    color: var(--color-gray-600);
+    margin-bottom: 24px;
+}
+
+.go-to-tasks {
+    margin-top: auto;
+}

@@ -1,0 +1,146 @@
+.sidebar {
+    top: 0;
+    width: 255px;
+    height: 100vh;
+    position: fixed;
+    padding: 26px 0px;
+    border-right: 1px solid var(--color-gray-200);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 24px 26px;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.logo h6 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 26px;
+    color: var(--color-gray-900);
+}
+
+.logo p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    color: var(--color-gray-500);
+}
+
+.sidebar img {
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px 14px;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.sidebar nav a {
+    position: relative;
+    color: var(--color-gray-700);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-radius: 14px;
+}
+
+.sidebar nav a:hover {
+    background-color: var(--color-gray-50);
+}
+
+.sidebar nav .active:hover {
+    background-color: transparent !important;
+}
+.sidebar nav a div{
+    position: absolute;
+    right: 16px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-gray-700);
+    background-color: rgba(229, 231, 235, .5);
+}
+
+.sidebar nav .active {
+    color: var(--color-blue-700);
+}
+
+.sidebar nav .active div {
+    color: var(--color-blue-700);
+    background-color: rgb(209, 228, 253);
+}
+
+.sidebar nav a svg {
+    stroke: var(--color-gray-700);
+}
+
+.sidebar nav .active svg {
+    stroke: var(--color-blue-700);
+}
+
+.sidebar-groups {
+    padding: 17px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-groups h5 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-gray-500);
+    letter-spacing: 0.5px;
+}
+
+.sidebar-groups ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-groups li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+.sidebar-groups li:hover {
+    background-color: var(--accent-color) !important;
+}
+
+.sidebar-groups li .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-bar {
+    position: absolute;
+    width: 100%;
+    transition: top 0.3s ease-out;
+    height: 100%;
+    background-color: var(--color-blue-50) !important;
+    border-radius: 14px;
+    left: 0;
+    z-index: -1;
+}
+

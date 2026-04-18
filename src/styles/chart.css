@@ -1,0 +1,77 @@
+.chart{
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    width: 59%;
+    border: 1px solid var(--color-gray-200);
+    box-shadow: 0px 1px 2px -1px #0000001A;
+    box-shadow: 0px 1px 3px 0px #0000001A;
+}
+
+.chart .icon{
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background-color: var(--color-blue-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart-header-left{
+    align-items: center;
+    display: flex;
+    gap: 12px;
+}
+
+.chart-header-left h4{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    color: var(--color-gray-900);
+}
+
+.chart-header-left p{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--color-gray-600);
+}
+
+.chart-header-right{
+    background-color:var(--color-gray-50);
+    border: 1px solid var(--color-gray-200);
+    padding: 4px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.chart-header-right button {
+    background: transparent;
+    border: 1px solid white;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 100%;
+}
+
+.chart-header-right button.active {
+    background: white;
+    color: #155DFC;
+    box-shadow: 0px 1px 3px 0px #00000040;
+}
+
+.chart-body {
+    height: 250px;
+    margin-top: 30px;
+}

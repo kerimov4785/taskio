@@ -1,0 +1,33 @@
+header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background: white;
+    z-index: 2;
+    width: calc(100vw - 255px);
+    top: 0;
+    height: 97px;
+    border-bottom: 1px solid var(--color-gray-200);
+    margin-left: 255px;
+    padding: 24px 32px;
+}
+
+header div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+header h4 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--color-gray-900);
+}
+
+header p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--color-gray-500);
+}
