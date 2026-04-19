@@ -49,10 +49,12 @@ function DateTasksPanel({ selectedDate }) {
           <div className="panel-separator"></div>
 
           <div className="panel-tasks-list">
-            {dayTasks.map(task => (
-              <div key={task.id} className={`panel-task-card ${task.isCompleted ? 'completed' : ''}`}>
+            {dayTasks.map(task => {
+              const isOverdue = !task.isCompleted && task.dueDate && task.dueDate.split('T')[0] < format(new Date(), 'yyyy-MM-dd');
+              return (
+              <div key={task.id} className={`panel-task-card ${task.isCompleted ? 'completed' : isOverdue ? 'overdue-card' : ''}`}>
                 <div
-                  className={`ptc-checkbox ${task.isCompleted ? 'checked' : ''}`}
+                  className={`ptc-checkbox ${task.isCompleted ? 'checked' : isOverdue ? 'overdue-check' : ''}`}
                   onClick={() => toggleTaskStatus(task.id)}
                 >
                   {task.isCompleted && (
@@ -65,6 +67,19 @@ function DateTasksPanel({ selectedDate }) {
                   </span>
                   <div className="ptc-badges">
                     <span className={`task-priority tag-${task.priority.toLowerCase()}`}>
+                      {task.priority === 'High' ? (
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        ) : task.priority === 'Medium' ? (
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        ) : (
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        )}
                       {task.priority}
                     </span>
                     {task.group && (
@@ -73,9 +88,15 @@ function DateTasksPanel({ selectedDate }) {
                       </span>
                     )}
                     {task.isCompleted && (
-                      <span className="task-status status-completed" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+                      <span className="task-status status-completed" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', color: 'var(--color-green-600)' }}>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                         Completed
+                      </span>
+                    )}
+                    {isOverdue && (
+                      <span className="task-status status-overdue" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', color: 'var(--color-red-600)', background: 'var(--color-red-100)', padding: '2px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: '500' }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 15 15"></polyline></svg>
+                        Overdue
                       </span>
                     )}
                   </div>
@@ -84,7 +105,7 @@ function DateTasksPanel({ selectedDate }) {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
               </div>
-            ))}
+            )})}
           </div>
         </>
       ) : (

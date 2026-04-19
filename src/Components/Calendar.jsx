@@ -34,7 +34,7 @@ function Calendar({ selectedDate, setSelectedDate }) {
     let hasCompleted = false;
 
     tasks.forEach(task => {
-      if (task.dueDate === dayStr) {
+      if (task.dueDate && task.dueDate.split('T')[0] === dayStr) {
         if (task.isCompleted) {
           hasCompleted = true;
         } else {
