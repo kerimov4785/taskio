@@ -74,7 +74,7 @@
     text-align: center;
     height: 48px;
     border: 1px solid var(--color-gray-200);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 0 12px;
     font-size: 14px;
     color: var(--color-gray-800);
@@ -134,7 +134,7 @@
     height: 44px;
     background: white;
     border: 1px solid var(--color-gray-200);
-    border-radius: 8px;
+    border-radius: 14px;
     font-weight: 500;
     color: var(--color-gray-700);
     cursor: pointer;
@@ -149,7 +149,7 @@
     flex: 1;
     height: 44px;
     border: none;
-    border-radius: 8px;
+    border-radius: 14px;
     font-weight: 500;
     color: white;
     transition: background 0.2s;
