@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { createPortal } from 'react-dom';
 import { DataContext } from '../Context/DataContext';
 import '../styles/creategroupmodal.css';
 
@@ -18,7 +19,7 @@ function CreateGroupModal({ onClose }) {
 
     const isSubmitDisabled = name.trim().length === 0;
 
-    return (
+    return createPortal(
         <div className="group-modal-overlay">
             <div className="group-modal-content">
                 <button className="group-modal-close" onClick={onClose}>
@@ -66,7 +67,8 @@ function CreateGroupModal({ onClose }) {
                     </button>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
 

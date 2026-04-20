@@ -2,8 +2,6 @@ import { Route, Router, Routes, useLocation } from "react-router-dom"
 import Tasks from "./Pages/Tasks"
 import Dashboard from "./Pages/Dashboard"
 import Calendar from "./Pages/Calendar"
-import Settings from "./Pages/Settings"
-import Profile from "./Pages/Profile"
 import Sidebar from "./Components/Sidebar"
 import Header from "./Components/Header"
 import { useContext, useEffect, useState } from "react"
@@ -38,8 +36,6 @@ function App() {
           <Route path="/" element={<Dashboard setActiveFilter={setActiveFilter} index={index} setIndex={setIndex} completedTasks={completedTasks} activeTasks={activeTasks} totalTasks={totalTasks} completedTasksToday={completedTasksToday} />} />
           <Route path="/tasks" element={<Tasks activeGroup={activeGroup} activeFilter={activeFilter} setActiveFilter={setActiveFilter} />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />} />
         </Routes>
       </main>
     </>

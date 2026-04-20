@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { DataContext } from '../Context/DataContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -39,7 +40,7 @@ function TaskModal({ onClose }) {
 
     const priorities = ['Low', 'Medium', 'High'];
 
-    return (
+    return createPortal(
         <div className="task-modal-overlay">
             <div className="task-modal-content">
                 <button className="task-modal-close" onClick={onClose}>
@@ -122,7 +123,8 @@ function TaskModal({ onClose }) {
                     <button className="tm-add-btn" style={{backgroundColor: title.trim().length > 0 ? "var(--color-blue-600)" : "var(--color-gray-300)" , cursor: title.trim().length > 0 ? "pointer" : "not-allowed" }} onClick={handleSubmit}>Add Task</button>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
 
