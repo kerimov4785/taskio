@@ -19,6 +19,7 @@
 }
 
 .dashboard-cards .card {
+    gap: 5px;
     animation: slideIn 0.5s ease-in-out;
     overflow: hidden;
     position: relative;
@@ -39,6 +40,7 @@
         transform: translateY(20px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -50,9 +52,11 @@
     font-weight: 500;
     line-height: 20px;
     color: var(--color-gray-600);
+    max-width: min-content;
 }
 
 .dashboard-cards .card h3 {
+    position: relative;
     font-size: 30px;
     font-weight: 600;
     line-height: 36px;
@@ -91,24 +95,28 @@
 }
 
 .streak-card h6 {
+    position: relative;
     font-size: 12px;
     font-weight: 400;
     margin-right: 10px;
     line-height: 16px;
     max-width: 130px;
     color: var(--color-gray-600);
+    z-index: 1;
+
 }
 
-.card-circle{
+.card-circle {
     position: absolute;
     bottom: -24px;
     right: -12px;
     width: 96px;
     height: 96px;
     border-radius: 50%;
-} 
+    z-index: 0;
+}
 
-.analytics{
+.analytics {
     margin-top: 25px;
     display: flex;
     gap: 25px;
@@ -268,4 +276,91 @@
 
 .view-all:hover {
     background: var(--color-gray-50);
+}
+
+.mobile-dashboard-cards {
+    display: none;
+}
+
+@media (max-width: 1130px) {
+    .dashboard-cards {
+        gap: 15px;
+    }
+
+    .dashboard-cards .card {
+        padding: 15px;
+    }
+
+    .dashboard-cards .card-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .dashboard>h3,
+    .dashboard>p {
+        display: none;
+    }
+
+    .dashboard-cards {
+        margin-top: 0;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+    }
+
+    .dashboard-cards .streak-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .dashboard-cards .streak-card h3 {
+        font-size: 30px !important;
+        line-height: 36px !important;
+    }
+
+    .dashboard-cards .card-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .dashboard-cards .card {
+        display: none;
+    }
+
+    .analytics {
+        flex-direction: column;
+    }
+
+    .mobile-dashboard-cards .card {
+        display: flex;
+    }
+
+    .mobile-dashboard-cards .card-circle,
+    .mobile-dashboard-cards .card-icon {
+        display: none;
+    }
+
+    .mobile-dashboard-cards .card {
+        justify-content: center;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .mobile-dashboard-cards .card h3{
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 0;
+    }
+
+    .mobile-dashboard-cards .card>div:first-child {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .mobile-dashboard-cards {
+        display: flex;
+        gap: 12px;
+    }
 }

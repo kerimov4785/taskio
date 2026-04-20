@@ -13,7 +13,7 @@ header {
     padding: 24px 32px;
 }
 
-header > div {
+header>div {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -95,11 +95,46 @@ header p {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #ff2d55; /* A bright red to match the MA circle */
+    background: #ff2d55;
+    /* A bright red to match the MA circle */
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
     font-size: 16px;
+}
+
+.burger-menu {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    header {
+        width: 100%;
+        margin: 0;
+        padding: 24px 20px;
+        height: 73px;
+        justify-content: start;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .burger-menu {
+        display: block;
+        cursor: pointer;
+    }
+
+    .header-right-actions {
+        display: none;
+    }
+
+    header p {
+        display: none;
+    }
+
+    header h4 {
+        font-size: 16px;
+        line-height: 24px;
+    }
 }

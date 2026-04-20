@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function CardDashboard({ card }) {
+    let [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    React.useEffect(() => {
+        window.addEventListener('resize', () => {
+            setWindowWidth(window.innerWidth)
+        })
+    }, [])
     return (
         <div className="card">
             <div>
-                <p>{card.title}</p>
-                <h3>{card.number}</h3>
+                <p>{windowWidth > 1024 ? card.title : card.title.split(' ')[0]}</p>
+                <h3 style={{color: windowWidth > 1024 ? "var(--color-gray-900)" : card.hoverColor }} >{card.number}</h3>
             </div>
             <div className='card-icon' style={{background: card.color }} >
                 {card.icon}

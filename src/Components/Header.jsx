@@ -47,6 +47,13 @@ function Header({ setIndex }) {
 
   return (
     <header>
+      <div className="burger-menu">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.33301 9.99933H16.6654" stroke="#4A5565" stroke-width="1.66655" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M3.33301 4.99963H16.6654" stroke="#4A5565" stroke-width="1.66655" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M3.33301 14.999H16.6654" stroke="#4A5565" stroke-width="1.66655" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
       <div>
         <h4>{getTitle()}</h4>
         <p>{getDescription()}</p>

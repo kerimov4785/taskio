@@ -8,7 +8,7 @@ import TodayPanel from '../Components/TodayPanel'
 import OverduePanel from '../Components/OverduePanel'
 import TodayFocus from '../Components/TodayFocus'
 
-function Dashboard({setActiveFilter, index, setIndex, completedTasks, activeTasks, totalTasks, completedTasksToday }) {
+function Dashboard({ setActiveFilter, index, setIndex, completedTasks, activeTasks, totalTasks, completedTasksToday }) {
   const { tasks, streakCount, getStreak, setStreakCount } = useContext(DataContext)
 
   useEffect(() => {
@@ -85,7 +85,12 @@ function Dashboard({setActiveFilter, index, setIndex, completedTasks, activeTask
         </div>
         <div className='analytics'>
           <Chart />
-          <TodayPanel  setActiveFilter={setActiveFilter} index={index} setIndex={setIndex} />
+          <div className="dashboard-cards mobile-dashboard-cards">
+            {cards.map((card, index) => (
+              <CardDashboard card={card} key={index} />
+            ))}
+          </div>
+          <TodayPanel setActiveFilter={setActiveFilter} index={index} setIndex={setIndex} />
         </div>
         <div className="overdue">
           <OverduePanel setActiveFilter={setActiveFilter} setIndex={setIndex} />
