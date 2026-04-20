@@ -6,6 +6,7 @@ import Sidebar from "./Components/Sidebar"
 import Header from "./Components/Header"
 import { useContext, useEffect, useState } from "react"
 import { DataContext } from "./Context/DataContext"
+import { Toaster } from "react-hot-toast"
 
 function App() {
   const [activeGroup, setActiveGroup] = useState("")
@@ -37,6 +38,10 @@ function App() {
   }, [location])
   return (
     <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <Sidebar windowWidth={windowWidth} sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen} index={index} setIndex={setIndex} withDateTasks={withDateTasks} totalTasks={totalTasks} activeTasks={activeTasks} activeGroup={activeGroup} setActiveGroup={setActiveGroup} />
       <Header sidebarIsOpen={sidebarIsOpen} windowWidth={windowWidth} setIndex={setIndex} setSidebarIsOpen={setSidebarIsOpen} />
       <main style={{ filter: sidebarIsOpen ? "brightness(0.5)" : "brightness(1)" }} >

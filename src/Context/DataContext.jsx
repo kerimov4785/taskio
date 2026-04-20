@@ -1,5 +1,6 @@
 import { differenceInDays } from "date-fns";
 import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const DataContext = createContext();
 
@@ -26,14 +27,17 @@ function DataProvider({ children }) {
             createdAt: new Date().toISOString()
         };
         setTasks(prev => [...prev, newTask])
+        toast.success("Task added successfully")
     }
 
     const updateTask = (id, updates) => {
         setTasks(prev => prev.map(item => item.id === id ? { ...item, updates } : item))
+        toast.success("Task updated successfully")
     }
 
     const deleteTask = (id) => {
         setTasks(prev => prev.filter(item => item.id !== id))
+        toast.success("Task deleted successfully")
     }
 
     const toggleTaskStatus = (id) => {
@@ -48,6 +52,7 @@ function DataProvider({ children }) {
             }
             return task;
         }));
+        toast.success("Task status updated successfully")
     };
 
     const getStreak = () => {
