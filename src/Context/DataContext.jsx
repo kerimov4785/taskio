@@ -83,8 +83,10 @@ function DataProvider({ children }) {
 
 
 
+    const [searchQuery, setSearchQuery] = useState('');
+
     return (
-        <DataContext.Provider value={{ tasks, setTasks, addTask, updateTask, deleteTask, toggleTaskStatus, streakCount, setStreakCount, getStreak }}>
+        <DataContext.Provider value={{ tasks, setTasks, addTask, updateTask, deleteTask, toggleTaskStatus, streakCount, setStreakCount, getStreak, searchQuery, setSearchQuery }}>
             {children}
         </DataContext.Provider>
     )

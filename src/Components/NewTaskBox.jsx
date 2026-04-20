@@ -153,6 +153,12 @@ function NewTaskBox({ activeGroup }) {
                                 dateFormat="MMM d"
                             />
                         </div>
+                        
+                        {title.trim().length > 0 && (
+                            <button className="add-task-submit-btn" onClick={handleAddTask}>
+                                Add Task
+                            </button>
+                        )}
                     </div>
 
                     <div className="new-task-footer">

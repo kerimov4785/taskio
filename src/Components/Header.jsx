@@ -1,44 +1,70 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import "../styles/header.css"
-import { useLocation } from 'react-router-dom'
-function Header() {
+import { useLocation, useNavigate } from 'react-router-dom'
+import { DataContext } from '../Context/DataContext'
+import TaskModal from './TaskModal'
+
+function Header({ setIndex }) {
   const location = useLocation()
-  
+  const navigate = useNavigate()
+  const { searchQuery, setSearchQuery } = useContext(DataContext)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   function getTitle() {
-    if(location.pathname === "/") {
+    if (location.pathname === "/") {
       return "Dashboard"
-    } else if(location.pathname === "/tasks") {
+    } else if (location.pathname === "/tasks") {
       return "Tasks"
-    } else if(location.pathname === "/calendar") {
+    } else if (location.pathname === "/calendar") {
       return "Calendar"
-    } else if(location.pathname === "/profile") {
+    } else if (location.pathname === "/profile") {
       return "Profile"
-    } else if(location.pathname === "/settings") {
+    } else if (location.pathname === "/settings") {
       return "Settings"
     }
   }
   function getDescription() {
-    if(location.pathname === "/") {
+    if (location.pathname === "/") {
       return "Overview of your productivity"
-    } else if(location.pathname === "/tasks") {
+    } else if (location.pathname === "/tasks") {
       return "Manage your tasks efficiently"
-    } else if(location.pathname === "/calendar") {
+    } else if (location.pathname === "/calendar") {
       return "Plan your schedule and visualize tasks by date"
-    } else if(location.pathname === "/profile") {
+    } else if (location.pathname === "/profile") {
       return "View and edit your profile information"
-    } else if(location.pathname === "/settings") {
+    } else if (location.pathname === "/settings") {
       return "Manage your account and preferences"
     }
   }
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value)
+    if (location.pathname !== '/tasks' && e.target.value.trim() !== '') {
+      navigate('/tasks')
+      setIndex(1)
+    }
+  }
+
   return (
     <header>
       <div>
         <h4>{getTitle()}</h4>
         <p>{getDescription()}</p>
       </div>
-      <div>
-                  
+      <div className="header-right-actions">
+        <div className="header-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" placeholder="Search tasks..." value={searchQuery} onChange={handleSearchChange} />
+        </div>
+        <button className="header-add-task-btn" onClick={() => setIsModalOpen(true)}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Add Task
+        </button>
+        <div className="header-profile-avatar">
+          MA
+        </div>
       </div>
+      {isModalOpen && <TaskModal onClose={() => setIsModalOpen(false)} />}
     </header>
   )
 }

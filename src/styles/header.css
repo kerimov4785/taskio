@@ -1,10 +1,11 @@
 header {
     position: fixed;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background: white;
     z-index: 2;
-    width: calc(100vw - 255px);
+    width: calc(100vw - 270px);
     top: 0;
     height: 97px;
     border-bottom: 1px solid var(--color-gray-200);
@@ -12,7 +13,7 @@ header {
     padding: 24px 32px;
 }
 
-header div {
+header > div {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -30,4 +31,75 @@ header p {
     font-weight: 400;
     line-height: 20px;
     color: var(--color-gray-500);
+}
+
+.header-right-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 12px;
+    color: var(--color-gray-400);
+}
+
+.header-search input {
+    width: 250px;
+    height: 40px;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 8px;
+    padding-left: 38px;
+    padding-right: 12px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+}
+
+.header-search input:focus {
+    border-color: var(--color-blue-500);
+}
+
+.header-add-task-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 18px;
+    background: var(--color-blue-600);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.header-add-task-btn:hover {
+    background: var(--color-blue-700);
+}
+
+.header-profile-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ff2d55; /* A bright red to match the MA circle */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
 }

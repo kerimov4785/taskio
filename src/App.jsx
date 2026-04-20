@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       <Sidebar workTasks={workTasks} studyTasks={studyTasks} personalTasks={personalTasks} index={index} setIndex={setIndex} withDateTasks={withDateTasks} totalTasks={totalTasks} activeTasks={activeTasks} activeGroup={activeGroup} setActiveGroup={setActiveGroup} />
-      <Header />
+      <Header setIndex={setIndex} />
       <main>
         <Routes>
           <Route path="/" element={<Dashboard setActiveFilter={setActiveFilter} index={index} setIndex={setIndex} completedTasks={completedTasks} activeTasks={activeTasks} totalTasks={totalTasks} completedTasksToday={completedTasksToday} />} />

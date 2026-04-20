@@ -6,7 +6,7 @@ import NewTaskBox from "../Components/NewTaskBox";
 
 function Tasks({activeGroup, activeFilter, setActiveFilter}) {
     const [sortBy, setSortBy] = useState('DueDate');
-    const { tasks } = useContext(DataContext);
+    const { tasks, searchQuery } = useContext(DataContext);
     
     const getFilteredTasks = () => {
         const todayStr = new Date().toISOString().split("T")[0];
@@ -15,6 +15,11 @@ function Tasks({activeGroup, activeFilter, setActiveFilter}) {
         if(activeGroup !== ""){
             filteredTasks = tasks.filter(task => task.group.toLowerCase() === activeGroup.toLowerCase());
         }
+
+        if (searchQuery.trim() !== '') {
+            filteredTasks = filteredTasks.filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()));
+        }
+
         switch (activeFilter) {
             case 'Active': result = filteredTasks.filter(task => !task.isCompleted); break;
             case 'Completed': result = filteredTasks.filter(task => task.isCompleted); break;
