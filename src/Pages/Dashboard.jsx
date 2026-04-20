@@ -84,7 +84,7 @@ function Dashboard({ setActiveFilter, index, setIndex, completedTasks, activeTas
           </div>
         </div>
         <div className='analytics'>
-          {/* <Chart /> */}
+          <Chart />
           <div className="dashboard-cards mobile-dashboard-cards">
             {cards.map((card, index) => (
               <CardDashboard card={card} key={index} />
