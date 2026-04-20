@@ -3,7 +3,7 @@ import { DataContext } from '../Context/DataContext';
 import '../styles/tasks.css';
 
 function TaskCard({ task }) {
-    const { toggleTaskStatus , deleteTask } = useContext(DataContext);
+    const { toggleTaskStatus , deleteTask, groups } = useContext(DataContext);
 
     const formatDate = (dateStr) => {
         const date = new Date(dateStr);
@@ -35,9 +35,14 @@ function TaskCard({ task }) {
                 </h4>
             </div>
             <div className="task-card-right">
-                {task.group && <span className={`task-group tag-${task.group.toLowerCase()}`}>
-                    {task.group}
-                </span>}
+                {task.group && (() => {
+                    const groupColor = (groups.find(g => g.name === task.group) || {color: 'blue'}).color;
+                    return (
+                        <span className="task-group" style={{ color: `var(--color-${groupColor}-700)`, backgroundColor: `var(--color-${groupColor}-50)`, border: `1px solid var(--color-${groupColor}-200)` }}>
+                            {task.group}
+                        </span>
+                    );
+                })()}
                 <span className={`task-priority tag-${task.priority.toLowerCase()}`}>
                     {task.priority}
                 </span>

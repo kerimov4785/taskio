@@ -4,7 +4,7 @@ import { format, isToday } from 'date-fns';
 import '../styles/tasks.css';
 
 function DateTasksPanel({ selectedDate }) {
-  const { tasks, toggleTaskStatus, deleteTask } = useContext(DataContext);
+  const { tasks, toggleTaskStatus, deleteTask, groups } = useContext(DataContext);
 
   const dayStr = format(selectedDate, 'yyyy-MM-dd');
   const dayTasks = tasks.filter(t => t.dueDate.split('T')[0] === dayStr);
@@ -69,11 +69,14 @@ function DateTasksPanel({ selectedDate }) {
                     <span className={`task-priority tag-${task.priority.toLowerCase()}`}>
                       {task.priority}
                     </span>
-                    {task.group && (
-                      <span className={`task-group tag-${task.group.toLowerCase()}`}>
-                        {task.group}
-                      </span>
-                    )}
+                    {task.group && (() => {
+                      const groupColor = (groups.find(g => g.name === task.group) || {color: 'blue'}).color;
+                      return (
+                        <span className="task-group" style={{ color: `var(--color-${groupColor}-700)`, backgroundColor: `var(--color-${groupColor}-50)`, border: `1px solid var(--color-${groupColor}-200)` }}>
+                          {task.group}
+                        </span>
+                      );
+                    })()}
                     {task.isCompleted && (
                       <span className="task-status status-completed" style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', color: 'var(--color-green-600)' }}>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>

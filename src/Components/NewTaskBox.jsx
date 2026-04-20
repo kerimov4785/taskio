@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function NewTaskBox({ activeGroup }) {
-    const { addTask } = useContext(DataContext);
+    const { addTask, groups: globalGroups } = useContext(DataContext);
     const [isExpanded, setIsExpanded] = useState(false);
     const [title, setTitle] = useState('');
     const [priority, setPriority] = useState('Medium');
@@ -55,8 +55,6 @@ function NewTaskBox({ activeGroup }) {
         }
     };
 
-    const groups = ['Work', 'Study', 'Personal'];
-
     return (
         <div className={`new-task-box ${isExpanded ? 'expanded' : ''}`} ref={boxRef}>
             <div className="new-task-input-row" onClick={handleFocus}>
@@ -85,7 +83,7 @@ function NewTaskBox({ activeGroup }) {
                             <span className="option-label">Group:</span>
                             <div className="group-dropdown-container">
                                 <button className="dropdown-style-btn" onClick={() => setIsGroupDropdownOpen(!isGroupDropdownOpen)}>
-                                    <span className={`group-dot dot-${group.toLowerCase()}`}></span>
+                                    <span className="group-dot" style={{ backgroundColor: `var(--color-${(globalGroups.find(g => g.name === group) || {color: 'blue'}).color}-500)` }}></span>
                                     {group}
                                     <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: isGroupDropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>
                                         <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -94,17 +92,17 @@ function NewTaskBox({ activeGroup }) {
 
                                 {isGroupDropdownOpen && (
                                     <div className="dropdown-menu">
-                                        {groups.map(g => (
+                                        {globalGroups.map(g => (
                                             <button
-                                                key={g}
-                                                className={`dropdown-item ${group === g ? 'active' : ''}`}
-                                                onClick={() => { setGroup(g); setIsGroupDropdownOpen(false); }}
+                                                key={g.name}
+                                                className={`dropdown-item ${group === g.name ? 'active' : ''}`}
+                                                onClick={() => { setGroup(g.name); setIsGroupDropdownOpen(false); }}
                                             >
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                    <span className={`group-dot dot-${g.toLowerCase()}`}></span>
-                                                    {g}
+                                                    <span className="group-dot" style={{ backgroundColor: `var(--color-${g.color}-500)` }}></span>
+                                                    {g.name}
                                                 </div>
-                                                {group === g && (
+                                                {group === g.name && (
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                                     </svg>

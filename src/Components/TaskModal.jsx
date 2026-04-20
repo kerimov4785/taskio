@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import '../styles/taskmodal.css';
 
 function TaskModal({ onClose }) {
-    const { addTask } = useContext(DataContext);
+    const { addTask, groups: globalGroups } = useContext(DataContext);
     const [title, setTitle] = useState('');
     const [group, setGroup] = useState('Personal');
     const [priority, setPriority] = useState('Medium');
@@ -37,7 +37,6 @@ function TaskModal({ onClose }) {
         }
     };
 
-    const groups = ['Work', 'Study', 'Personal'];
     const priorities = ['Low', 'Medium', 'High'];
 
     return (
@@ -63,7 +62,7 @@ function TaskModal({ onClose }) {
                             <button className="tm-dropdown-trigger" onClick={() => setIsGroupOpen(!isGroupOpen)}>
                                 {group ? (
                                     <span style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
-                                        <span className={`group-dot dot-${group.toLowerCase()}`}></span>
+                                        <span className="group-dot" style={{ backgroundColor: `var(--color-${(globalGroups.find(g => g.name === group) || {color: 'blue'}).color}-500)` }}></span>
                                         {group}
                                     </span>
                                 ) : "Select a group (optional)"}
@@ -71,11 +70,11 @@ function TaskModal({ onClose }) {
                             </button>
                             {isGroupOpen && (
                                 <div className="tm-dropdown-menu">
-                                    {groups.map(g => (
-                                        <button key={g} className="tm-dropdown-item" onClick={() => {setGroup(g); setIsGroupOpen(false);}}>
-                                            <span className={`group-dot dot-${g.toLowerCase()}`}></span>
-                                            {g}
-                                            {group === g && <svg width="16" height="16" style={{marginLeft: 'auto'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>}
+                                    {globalGroups.map(g => (
+                                        <button key={g.name} className="tm-dropdown-item" onClick={() => {setGroup(g.name); setIsGroupOpen(false);}}>
+                                            <span className="group-dot" style={{ backgroundColor: `var(--color-${g.color}-500)` }}></span>
+                                            {g.name}
+                                            {group === g.name && <svg width="16" height="16" style={{marginLeft: 'auto'}} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>}
                                         </button>
                                     ))}
                                 </div>

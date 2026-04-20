@@ -85,8 +85,25 @@ function DataProvider({ children }) {
 
     const [searchQuery, setSearchQuery] = useState('');
 
+    const [groups, setGroups] = useState(() => {
+        const saved = localStorage.getItem('taskio_groups');
+        return saved ? JSON.parse(saved) : [
+            { name: 'Work', color: 'blue' },
+            { name: 'Study', color: 'purple' },
+            { name: 'Personal', color: 'green' }
+        ];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('taskio_groups', JSON.stringify(groups));
+    }, [groups]);
+
+    const addGroup = (name, color) => {
+        setGroups(prev => [...prev, { name, color }]);
+    };
+
     return (
-        <DataContext.Provider value={{ tasks, setTasks, addTask, updateTask, deleteTask, toggleTaskStatus, streakCount, setStreakCount, getStreak, searchQuery, setSearchQuery }}>
+        <DataContext.Provider value={{ tasks, setTasks, addTask, updateTask, deleteTask, toggleTaskStatus, streakCount, setStreakCount, getStreak, searchQuery, setSearchQuery, groups, addGroup }}>
             {children}
         </DataContext.Provider>
     )

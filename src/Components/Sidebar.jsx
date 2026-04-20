@@ -1,10 +1,15 @@
-import React, { use, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "../styles/sidebar.css"
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { DataContext } from '../Context/DataContext'
 import logo from '../assets/logo.png'
+import CreateGroupModal from './CreateGroupModal'
 
-function Sidebar({ workTasks, studyTasks, personalTasks, index, setIndex, withDateTasks, totalTasks, activeTasks, activeGroup, setActiveGroup }) {
+function Sidebar({ index, setIndex, withDateTasks, totalTasks, activeTasks, activeGroup, setActiveGroup }) {
     const navigate = useNavigate()
+    const { groups, tasks } = useContext(DataContext)
+    const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
+
     return (
         <div className='sidebar'>
             <div className='logo'>
@@ -26,7 +31,7 @@ function Sidebar({ workTasks, studyTasks, personalTasks, index, setIndex, withDa
                     Dashboard
                     <div>{totalTasks}</div>
                 </NavLink>
-                <NavLink onClick={() => { setActiveGroup(''), setIndex(1) }} to="/tasks">
+                <NavLink onClick={() => { setActiveGroup(''); setIndex(1) }} to="/tasks">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.66667 4.16667H3.33333C2.8731 4.16667 2.5 4.53977 2.5 5.00001V8.33334C2.5 8.79358 2.8731 9.16667 3.33333 9.16667H6.66667C7.1269 9.16667 7.5 8.79358 7.5 8.33334V5.00001C7.5 4.53977 7.1269 4.16667 6.66667 4.16667Z" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M2.5 14.1667L4.16667 15.8333L7.5 12.5" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
@@ -51,26 +56,25 @@ function Sidebar({ workTasks, studyTasks, personalTasks, index, setIndex, withDa
             <div className='sidebar-groups'>
                 <h5>GROUPS</h5>
                 <ul>
-                    <li onClick={() => { navigate("/tasks"); setActiveGroup("Work"); setIndex(1) }}
-                        style={{ "--accent-color": "var(--color-blue-100)", backgroundColor: activeGroup.toLowerCase() === "work" ? "var(--color-blue-50) !important" : "transparent", color: activeGroup.toLowerCase() === "work" ? "var(--color-blue-700)" : "var(--color-gray-700)" }}>
-                        <span className='dot' style={{ backgroundColor: "var(--color-blue-500)" }}></span>
-                        Work
-                        <div>{workTasks}</div>
-                    </li>
-                    <li onClick={() => { navigate("/tasks"); setActiveGroup("Study"); setIndex(1) }}
-                        style={{ "--accent-color": "var(--color-purple-100)", backgroundColor: activeGroup.toLowerCase() === "study" ? "var(--color-purple-50) !important" : "transparent", color: activeGroup.toLowerCase() === "study" ? "var(--color-purple-700)" : "var(--color-gray-700)" }}>
-                        <span className='dot' style={{ backgroundColor: "var(--color-purple-500)" }}></span>
-                        Study
-                        <div>{studyTasks}</div>
-                    </li>
-                    <li onClick={() => { navigate("/tasks"); setActiveGroup("Personal"); setIndex(1) }}
-                        style={{ "--accent-color": "var(--color-green-100)", backgroundColor: activeGroup.toLowerCase() === "personal" ? "var(--color-green-50) !important" : "transparent", color: activeGroup.toLowerCase() === "personal" ? "var(--color-green-700)" : "var(--color-gray-700)" }}>
-                        <span className='dot' style={{ backgroundColor: "var(--color-green-500)" }}></span>
-                        Personal
-                        <div>{personalTasks}</div>
+                    {groups.map(g => {
+                        const count = tasks.filter(t => t.group.toLowerCase() === g.name.toLowerCase()).length;
+                        const isGroupActive = activeGroup.toLowerCase() === g.name.toLowerCase();
+                        return (
+                            <li key={g.name} onClick={() => { navigate("/tasks"); setActiveGroup(g.name); setIndex(1) }}
+                                style={{ "--accent-color": `var(--color-${g.color}-100)`, backgroundColor: isGroupActive ? `var(--color-${g.color}-50) !important` : "transparent", color: isGroupActive ? `var(--color-${g.color}-700)` : "var(--color-gray-700)" }}>
+                                <span className='dot' style={{ backgroundColor: `var(--color-${g.color}-500)` }}></span>
+                                {g.name}
+                                <div>{count}</div>
+                            </li>
+                        );
+                    })}
+                    <li className="create-group-btn" onClick={() => setIsGroupModalOpen(true)}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Create new group
                     </li>
                 </ul>
             </div>
+            {isGroupModalOpen && <CreateGroupModal onClose={() => setIsGroupModalOpen(false)} />}
         </div>
     )
 }

@@ -20,9 +20,6 @@ function App() {
   const totalTasks = tasks.length;
   const activeTasks = tasks.filter(item => item.isCompleted == false).length;
   const completedTasks = tasks.filter(item => item.isCompleted == true).length;
-  const workTasks = tasks.filter(item => item.group.toLowerCase() == "work").length;
-  const studyTasks = tasks.filter(item => item.group.toLowerCase() == "study").length;
-  const personalTasks = tasks.filter(item => item.group.toLowerCase() == "personal").length;
   const completedTasksToday = tasks.filter(item => item.isCompleted == true && item.completedAt.split("T")[0] == new Date().toISOString().split("T")[0]).length;
   const withDateTasks = tasks.filter(item => item.dueDate !== "" && item.isCompleted == false).length;
 
@@ -34,7 +31,7 @@ function App() {
   }, [location])
   return (
     <>
-      <Sidebar workTasks={workTasks} studyTasks={studyTasks} personalTasks={personalTasks} index={index} setIndex={setIndex} withDateTasks={withDateTasks} totalTasks={totalTasks} activeTasks={activeTasks} activeGroup={activeGroup} setActiveGroup={setActiveGroup} />
+      <Sidebar index={index} setIndex={setIndex} withDateTasks={withDateTasks} totalTasks={totalTasks} activeTasks={activeTasks} activeGroup={activeGroup} setActiveGroup={setActiveGroup} />
       <Header setIndex={setIndex} />
       <main>
         <Routes>
