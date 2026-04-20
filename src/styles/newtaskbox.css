@@ -114,6 +114,10 @@
     align-items: center;
 }
 
+.group-dropdown-container .dropdown-menu{
+    left: 0;
+}
+
 /* Base override for react-datepicker to inherit styling */
 .react-datepicker-wrapper {
     width: 100%;
@@ -147,6 +151,7 @@
 
 /* Priority toggles */
 .priority-toggles {
+    flex-wrap: wrap;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -263,4 +268,15 @@
 
 .add-task-submit-btn:active {
     transform: scale(0.95);
+}
+
+
+@media (max-width: 1024px) {
+    .new-task-options-row{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding-top: 10px;
+    }
+
 }

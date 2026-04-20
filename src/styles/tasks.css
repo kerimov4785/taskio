@@ -6,6 +6,7 @@
 }
 
 .task-card {
+    position: relative;
     display: flex;
     gap: 20px;
     justify-content: space-between;
@@ -67,9 +68,11 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
-.task-priority , .task-group {
+.task-priority,
+.task-group {
     padding: 2px 14px;
     border-radius: 16px;
     font-size: 12px;
@@ -121,15 +124,16 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--color-gray-500);
-    min-width: 90px;
 }
 
 .task-date.today {
     color: var(--color-orange-600);
 }
+
 .task-date.overduee {
     color: var(--color-red-600);
 }
+
 .task-status {
     padding: 4px 12px;
     border-radius: 16px;
@@ -197,4 +201,26 @@
 .tasks-empty-state p {
     font-size: 14px;
     color: var(--color-gray-500);
+}
+
+@media (max-width: 1024px) {
+    .task-card {
+        padding: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .task-delete-btn {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        padding: 0;
+    }
+
+    .task-card-right {
+        padding-right: 25px;
+        gap: 10px;
+    }
+
 }

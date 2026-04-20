@@ -62,7 +62,7 @@ function Dashboard({ setActiveFilter, index, setIndex, completedTasks, activeTas
             <div>
               <div>
                 <p>Productivity Streak</p>
-                <h3>{streakCount == 0 ? 'No streak yet' : streakCount} days</h3>
+                <h3>{streakCount} days</h3>
               </div>
               <div className='card-icon' style={{ backgroundColor: "var(--color-orange-100)" }}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -18,6 +18,7 @@
 
 .filter-btn {
     display: flex;
+    min-width: max-content;
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
@@ -140,4 +141,23 @@
     background: var(--color-gray-100);
     color: var(--color-gray-900);
     font-weight: 500;
+}
+
+@media (max-width: 1130px) {
+    .tasks-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .tasks-filters{
+        overflow: scroll;
+        scrollbar-width: none;
+        width: 100%;
+    }
+    .filter-btn{
+        padding: 5px 16px;
+    }
 }

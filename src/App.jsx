@@ -11,9 +11,11 @@ function App() {
   const [activeGroup, setActiveGroup] = useState("")
   const [activeFilter, setActiveFilter] = useState('All');
   const location = useLocation()
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
   const [index, setIndex] = useState(
     location.pathname === "/" ? 0 : location.pathname === "/tasks" ? 1 : location.pathname === "/calendar" ? 2 : 0
   )
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const { tasks } = useContext(DataContext)
   const totalTasks = tasks.length;
   const activeTasks = tasks.filter(item => item.isCompleted == false).length;
@@ -22,16 +24,22 @@ function App() {
   const withDateTasks = tasks.filter(item => item.dueDate !== "" && item.isCompleted == false).length;
 
   useEffect(() => {
+    window.addEventListener('resize', () => {
+      setWindowWidth(window.innerWidth)
+    })
+  }, [])
+  useEffect(() => {
     window.scrollTo(0, 0)
+    setSidebarIsOpen(false)
     if (location.pathname !== "/tasks") {
       setActiveGroup("")
     }
   }, [location])
   return (
     <>
-      <Sidebar index={index} setIndex={setIndex} withDateTasks={withDateTasks} totalTasks={totalTasks} activeTasks={activeTasks} activeGroup={activeGroup} setActiveGroup={setActiveGroup} />
-      <Header setIndex={setIndex} />
-      <main>
+      <Sidebar windowWidth={windowWidth} sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen} index={index} setIndex={setIndex} withDateTasks={withDateTasks} totalTasks={totalTasks} activeTasks={activeTasks} activeGroup={activeGroup} setActiveGroup={setActiveGroup} />
+      <Header sidebarIsOpen={sidebarIsOpen} windowWidth={windowWidth} setIndex={setIndex} setSidebarIsOpen={setSidebarIsOpen} />
+      <main style={{ filter: sidebarIsOpen ? "brightness(0.5)" : "brightness(1)" }} >
         <Routes>
           <Route path="/" element={<Dashboard setActiveFilter={setActiveFilter} index={index} setIndex={setIndex} completedTasks={completedTasks} activeTasks={activeTasks} totalTasks={totalTasks} completedTasksToday={completedTasksToday} />} />
           <Route path="/tasks" element={<Tasks activeGroup={activeGroup} activeFilter={activeFilter} setActiveFilter={setActiveFilter} />} />

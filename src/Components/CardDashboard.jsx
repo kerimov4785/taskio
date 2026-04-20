@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function CardDashboard({ card }) {
     let [windowWidth, setWindowWidth] = useState(window.innerWidth)
-    React.useEffect(() => {
+    useEffect(() => {
         window.addEventListener('resize', () => {
             setWindowWidth(window.innerWidth)
         })

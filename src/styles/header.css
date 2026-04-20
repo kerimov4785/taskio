@@ -96,7 +96,6 @@ header p {
     height: 48px;
     border-radius: 50%;
     background: #ff2d55;
-    /* A bright red to match the MA circle */
     color: white;
     display: flex;
     align-items: center;
@@ -125,8 +124,21 @@ header p {
         cursor: pointer;
     }
 
-    .header-right-actions {
+    .header-right-actions .header-search,
+    .header-profile-avatar {
         display: none;
+    }
+
+    .header-add-task-btn {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        right: 20px;
+        padding: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 6px -4px #0000001A, 0px 10px 15px -3px #0000001A;
     }
 
     header p {

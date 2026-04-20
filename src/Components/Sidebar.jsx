@@ -5,18 +5,24 @@ import { DataContext } from '../Context/DataContext'
 import logo from '../assets/logo.png'
 import CreateGroupModal from './CreateGroupModal'
 
-function Sidebar({ index, setIndex, withDateTasks, totalTasks, activeTasks, activeGroup, setActiveGroup }) {
+function Sidebar({ windowWidth, sidebarIsOpen, setSidebarIsOpen, index, setIndex, withDateTasks, totalTasks, activeTasks, activeGroup, setActiveGroup }) {
     const navigate = useNavigate()
     const { groups, tasks } = useContext(DataContext)
     const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
 
     return (
-        <div className='sidebar'>
+        <div className={`sidebar`} style={{ left: windowWidth > 1024 ? "0" : sidebarIsOpen ? "0" : "-100%", transition: "all 0.3s ease" }} >
             <div className='logo'>
                 <img src={logo} alt="Taskio" />
                 <div>
                     <h6>Taskio</h6>
                     <p>Productive Hub</p>
+                </div>
+                <div style={{ display: windowWidth > 1024 ? "none" : "block" }} onClick={() => setSidebarIsOpen(false)} className="close-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 5L15 15" stroke="#4A5565" strokeWidth="1.66655" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M15 5L5 15" stroke="#4A5565" strokeWidth="1.66655" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                 </div>
             </div>
             <nav>

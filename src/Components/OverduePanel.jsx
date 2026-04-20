@@ -22,7 +22,7 @@ function OverduePanel({setActiveFilter, setIndex }) {
                     <p>Tasks that need your attention</p>
                 </div>
                 <button className="view-all-link" onClick={() => {navigate('/tasks'); if(setIndex) setIndex(1); setActiveFilter('Overdue') }}>
-                    View All Tasks &rarr;
+                    View All Tasks
                 </button>
             </div>
 

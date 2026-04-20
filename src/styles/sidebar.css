@@ -149,8 +149,20 @@
     z-index: -1;
 }
 
+.close-btn {
+    position: absolute;
+    right: 16px;
+    top: 24px;
+    cursor: pointer;
+}
+
 @media (max-width: 1024px) {
     .sidebar {
-        left: -100%;
+        padding-top: 24px;
+        background-color: white;
+        z-index: 1000;
+    }
+    .sidebar .logo{
+        padding-bottom: 24px;
     }
 }
