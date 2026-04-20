@@ -24,7 +24,6 @@
   flex-direction: column;
 }
 
-/* Calendar Header */
 .calendar-header {
   display: flex;
   justify-content: space-between;
@@ -61,7 +60,6 @@
   background: var(--accent);
 }
 
-/* Calendar Grid */
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -115,7 +113,6 @@
   color: var(--color-blue-600);
 }
 
-/* Dots inside cell */
 .calendar-cell-dots {
   display: flex;
   gap: 3px;
@@ -142,7 +139,6 @@
   background: var(--color-green-500);
 }
 
-/* Legend */
 .calendar-legend {
   display: flex;
   justify-content: center;
@@ -160,7 +156,6 @@
   gap: 6px;
 }
 
-/* Panel Right Side */
 .panel-header {
   display: flex;
   align-items: center;
@@ -242,7 +237,6 @@
   color: var(--color-green-700);
 }
 
-/* Task List */
 .panel-tasks-list {
   display: flex;
   flex-direction: column;
@@ -252,7 +246,6 @@
   padding-right: 4px;
 }
 
-/* Custom Scrollbar for Tasks List */
 .panel-tasks-list::-webkit-scrollbar {
   width: 6px;
 }

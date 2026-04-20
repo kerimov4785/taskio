@@ -118,7 +118,6 @@
     left: 0;
 }
 
-/* Base override for react-datepicker to inherit styling */
 .react-datepicker-wrapper {
     width: 100%;
     display: inline-block;
@@ -149,7 +148,6 @@
     border-radius: 8px !important;
 }
 
-/* Priority toggles */
 .priority-toggles {
     flex-wrap: wrap;
     display: flex;
@@ -191,7 +189,6 @@
     color: var(--color-red-700);
 }
 
-/* Set date button */
 .set-date-btn {
     padding: 4px 12px;
     border-radius: 8px;
@@ -208,7 +205,6 @@
     background: var(--color-gray-50);
 }
 
-/* Footer */
 .new-task-footer {
     padding: 12px 16px;
     border-radius: 0 0 12px 12px;
@@ -235,7 +231,6 @@
     font-weight: 600;
 }
 
-/* Add Task submit button */
 @keyframes scaleInTaskBtn {
     0% {
         transform: scale(0.9);
